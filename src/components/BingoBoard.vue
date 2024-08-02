@@ -1,21 +1,44 @@
 <script setup>
 
-import { defineProps } from 'vue'
+import { computed, defineProps, ref, toRefs } from 'vue'
 
-defineProps({
+const props = defineProps({
   board : {
     type: [Object, null],
     required: true
-  }
+  },
+  maxLength: Number
 })
+
+const bingoBoolean = computed(() => {
+  const temp = []
+
+  for(let i=0;i<props.maxLength;i++){
+    temp.push(false)
+  }
+
+  return temp
+})
+
+const update = (num) => {
+
+
+}
+
+const checkBingo = () => {
+
+}
 
 </script>
 
 <template>
   <v-container class="bingo-container">
-    <v-sheet class="bingo" v-for="(number, idx) in board.value" :key="idx" :ref="'bingo_'+number">
-        {{ number }}
-    </v-sheet>
+    <v-col v-for="(number, idx) in board.value" :key="idx" :ref="'bingo_'+number">
+        <v-row class="bingo" v-for="(num, idx) in number" :key="idx" :ref="'bingo_'+num">
+          {{ num }}
+        </v-row>
+    </v-col>
+      {{ bingoBoolean }}
   </v-container>
 </template>
 
@@ -28,7 +51,7 @@ defineProps({
     flex: 0 0 33%;
     border: 1px solid #ced3d6;
     display: flex;
-    height: 100px;
+    height: 50px;
     font-size: 30px;
     justify-content: center;
     align-items: center;

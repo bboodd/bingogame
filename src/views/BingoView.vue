@@ -1,11 +1,11 @@
 <script setup>
 import {  } from 'vue'
-import BingoPlayerList from '@/components/BingoPlayerList.vue';
+import GameManager from '@/components/GameManager.vue';
 
 </script>
 
 <template>
-  <BingoPlayerList/>
+  <GameManager/>
 </template>
 
 <style lang="scss" scoped>
